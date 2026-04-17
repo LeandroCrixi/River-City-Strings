@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets'
+import logo from '../assets/images/main/Logo2.svg'
+---
+
+<footer>
+  <div class="content">
+    <a href="/"><Image src={logo} alt="River City Strings" /></a>
+    <p>
+      Professional violin and viola instruction, youth ensembles, and live event
+      music in Grand Rapids, Michigan.
+    </p>
+  </div>
+  <div class="links">
+    <span>Quick Links</span>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/lessons">Private Lessons</a></li>
+      <li><a href="/youth-strings">Youth Strings</a></li>
+      <li><a href="/chamber">Chamber Music</a></li>
+      <li><a href="/events">Events</a></li>
+      <li><a href="/contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+  <div class="contact">
+    <ul>
+      <li><img src="../../public/location.svg" alt="" /> Serving Grand Rapids & surrounding areas</li>
+      <li><img src="../../public/Phone.svg" alt="" /> <a href="tel:+(312) 889-3508">(312) 889-3508</a></li>
+      <li><img src="../../public/email.svg" alt="" /><a href="mailto:music.rccmc@gmail.com">music.rccmc@gmail.com</a></li>
+    </ul>
+  </div>
+</footer>

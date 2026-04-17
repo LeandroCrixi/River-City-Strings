@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+
+# VS Code settings
+.vscode/
+
+# Astro cache
+.astro/
+
+# Sanity Studio output
+studio/river-city-strings/.sanity/
+
+# Mac system files
+*.DS_Store
+
+# Misc
+*.log
+*.tmp
+
+# Ignore local static files (if any)
+frontend/public/

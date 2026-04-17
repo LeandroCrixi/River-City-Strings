@@ -1,0 +1,14 @@
+/* Importing general CSS - UTILS */
+@import './utils/global.css';
+@import './utils/typography.css';
+@import './utils/colors.css';
+
+/* Importing Components */
+@import './components/components.css';
+@import './components/header.css';
+@import './components/footer.css';
+@import './components/burguerMenu.css';
+@import './components/animations.css';
+
+/* Importing pages styles */
+@import './modules/home.css';

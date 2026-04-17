@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/MainLayout.astro'
+import { sanityClient } from 'sanity:client'
+import { createImageUrlBuilder } from '@sanity/image-url'
+import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
+
+// Fetch the Home Page data
+const homeData = await sanityClient.fetch(`*[_type == "homePage"][0]`)
+
+// If no data exists yet, we provide fallbacks so the site doesn't crash
+const {
+  heroTitle = 'Inspiring Musicians.',
+  heroSubtitle = 'Building Confidence. Creating Community.',
+  heroDescription = 'Violin, Viola, Cello & Bass instruction, youth orchestra, and professional musicians for events',
+  welcomeImage = '',
+  welcomeTitle = 'Welcome Title',
+  welcomeText = 'Welcome Text',
+  founderName = 'Teresa Bellamy',
+  founderBio = [],
+  founderImage = 'Founder Image',
+  services = [],
+} = homeData || {}
+
+// Build Sanity image URL if welcomeImage exists
+const builder = createImageUrlBuilder(sanityClient)
+// Helper function to make the HTML cleaner
+function urlFor(source: any) {
+  return builder.image(source)
+}
+const welcomeImageUrl =
+  welcomeImage && welcomeImage.asset ? builder.image(welcomeImage).url() : ''
+const founderImageUrl =
+  founderImage && founderImage.asset ? builder.image(founderImage).url() : ''
+---
+
+<BaseLayout title="Home">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>{heroTitle}</h1>
+      <h2>{heroSubtitle}</h2>
+      <p>{heroDescription}</p>
+      <a href="/contact" class="btn btn-primary">Book a Lesson</a>
+      <a href="/contact" class="btn btn-secondary">Explore Services</a>
+    </div>
+    <img src="../../src/assets/images/home/bg-img.jpg" alt="" />
+  </section>
+
+  <section class="welcome container">
+    <div class="welcome-img">
+      {welcomeImageUrl && <img src={welcomeImageUrl} alt="Welcome" />}
+    </div>
+    <div class="welcome-content">
+      <h3>
+        {welcomeTitle.split('\n')[0]}<br />
+        <i>{welcomeTitle.split('\n')[1]}</i>
+      </h3>
+      <p set:html={welcomeText.replace(/\n/g, '<br />')} />
+      <button class="btn">learn more</button>
+    </div>
+  </section>
+
+  <section class="founder">
+    <div class="founder-container">
+      <div class="context">
+        <h3>
+          Meet the Founder <br />
+          <span class="italic">{founderName}</span>
+        </h3>
+        <PortableTextRenderer client:only="react" value={founderBio} />
+      </div>
+      <div class="img">
+        {founderImage && <img src={founderImageUrl} alt="Founder" />}
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="title">
+      <h3>Our Programs <br /> <span class="italic">& Services</span></h3>
+      <p class="arrow"><img src="../../public/arrow.svg" alt="" /></p>
+    </div>
+    <div class="card-container">
+      {
+        services.map((service: any) => (
+          <div class="service-card">
+            <div class="img">
+              {service.serviceImage && service.serviceImage.asset && (
+                <img
+                  src={urlFor(service.serviceImage).url()}
+                  alt={service.title}
+                />
+              )}
+              <div>
+                <span>{service.bubbleText}</span>
+              </div>
+            </div>
+            <div class="service-content">
+              <h4>{service.title}</h4>
+              <p>{service.description}</p>
+              <a href={service.link} class="cta">
+                {service.buttonText || 'Learn More'}
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="contact-box">
+    <div class="contact-box-img"><img src="../../src/assets/images/main/contact-box.jpg" alt=""></div>
+    <div class="contact-box-content">
+      <h3>Get in <span class="italic">Touch</span></h3>
+      <p>Interested in lessons, programs, or event music? We’d love to hear from you.</p>
+      <ul>
+        <li><img src="../../public/location.svg" alt=""> Serving Grand Rapids & surrounding areas</li>
+        <li><img src="../../public/Phone.svg" alt=""> <a href="tel:+(312) 889-3508">(312) 889-3508</a></li>
+        <li><img src="../../public/email.svg" alt=""> <a href="mailto:music.rccmc@gmail.com">music.rccmc@gmail.com</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

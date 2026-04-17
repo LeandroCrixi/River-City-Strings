@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets'
+import logo from '../assets/images/main/Logo.svg'
+---
+
+<header>
+  <a href="/"><Image src={logo} alt="River City Strings" /></a>
+
+  <nav>
+    <button class="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-menu">
+      <li>
+        <button class="close-menu" aria-label="Close menu">&times;</button>
+      </li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/lessons">Private Lessons</a></li>
+      <li><a href="/youth-strings">Youth Strings</a></li>
+      <li><a href="/chamber">Chamber Music</a></li>
+      <li><a href="/events">Events</a></li>
+      <li><a href="/contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+</header>
