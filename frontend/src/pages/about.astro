@@ -3,10 +3,9 @@ import BaseLayout from '../layouts/MainLayout.astro'
 import { sanityClient } from 'sanity:client'
 import { createImageUrlBuilder } from '@sanity/image-url'
 import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
-import StatusBadge from '../components/StatusBadge.tsx'
 
 // Fetch the Home Page data
-const homeData = await sanityClient.fetch(`*[_type == "homePage"][0]`)
+const homeData = await sanityClient.fetch(`*[_type == "aboutPage"][0]`)
 
 // If no data exists yet, we provide fallbacks so the site doesn't crash
 const {
@@ -20,7 +19,6 @@ const {
   founderBio = [],
   founderImage = 'Founder Image',
   services = [],
-  isAcceptingStudents = true,
 } = homeData || {}
 
 // Build Sanity image URL if welcomeImage exists
@@ -36,9 +34,6 @@ const founderImageUrl =
 ---
 
 <BaseLayout title="Home">
-  <div class="status-container">
-    <StatusBadge client:load isAccepting={isAcceptingStudents} />
-  </div>
   <section class="hero">
     <div class="hero-content">
       <h1>{heroTitle}</h1>
@@ -113,28 +108,14 @@ const founderImageUrl =
   </section>
 
   <section class="contact-box">
-    <div class="contact-box-img">
-      <img src="../../src/assets/images/main/contact-box.jpg" alt="" />
-    </div>
+    <div class="contact-box-img"><img src="../../src/assets/images/main/contact-box.jpg" alt=""></div>
     <div class="contact-box-content">
       <h3>Get in <span class="italic">Touch</span></h3>
-      <p>
-        Interested in lessons, programs, or event music? We’d love to hear from
-        you.
-      </p>
+      <p>Interested in lessons, programs, or event music? We’d love to hear from you.</p>
       <ul>
-        <li>
-          <img src="../../public/location.svg" alt="" /> Serving Grand Rapids & surrounding
-          areas
-        </li>
-        <li>
-          <img src="../../public/Phone.svg" alt="" />
-          <a href="tel:+(312) 889-3508">(312) 889-3508</a>
-        </li>
-        <li>
-          <img src="../../public/email.svg" alt="" />
-          <a href="mailto:music.rccmc@gmail.com">music.rccmc@gmail.com</a>
-        </li>
+        <li><img src="../../public/location.svg" alt=""> Serving Grand Rapids & surrounding areas</li>
+        <li><img src="../../public/Phone.svg" alt=""> <a href="tel:+(312) 889-3508">(312) 889-3508</a></li>
+        <li><img src="../../public/email.svg" alt=""> <a href="mailto:music.rccmc@gmail.com">music.rccmc@gmail.com</a></li>
       </ul>
     </div>
   </section>

@@ -1,0 +1,21 @@
+---
+import { sanityClient } from 'sanity:client';
+import InvestmentContent from './_investment.mdx'; // Import MDX as a component
+import InvestmentLayout from '../layouts/InvestmentLayout.astro';
+
+const pricingData = await sanityClient.fetch(`*[_type == "homePage"][0]{
+  price60, 
+  price45, 
+  price30
+}`);
+
+const rates = {
+  hour: pricingData?.price60 || 55,
+  fortyFive: pricingData?.price45 || 43,
+  halfHour: pricingData?.price30 || 30
+};
+---
+
+<InvestmentLayout title="Investment & Policies">
+  <InvestmentContent rates={rates} />
+</InvestmentLayout>

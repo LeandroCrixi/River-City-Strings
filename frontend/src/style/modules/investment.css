@@ -1,0 +1,77 @@
+.investmentSection {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 0 20px;
+
+  & h1 {
+    font-family: var(--font-heading);
+    color: var(--deep-purple);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  & p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--rich-navy);
+  }
+
+  /* React Calculator Styling */
+  & .calcContainer {
+    background: var(--soft-mist);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 6px solid var(--dusty-rose);
+    margin: 3rem 0;
+
+    & .calcTitle {
+      font-family: var(--font-heading);
+      color: var(--deep-purple);
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+
+    & .inputGroup {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      & label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: var(--rich-navy);
+      }
+
+      & select, & input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: var(--font-body);
+      }
+    }
+
+    & .totalDisplay {
+      border-top: 2px solid #fff;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+
+      & .price {
+        font-size: 2rem;
+        color: var(--deep-purple);
+      }
+    }
+
+    & .disclaimer {
+      font-size: 0.8rem;
+      font-style: italic;
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+  }
+}

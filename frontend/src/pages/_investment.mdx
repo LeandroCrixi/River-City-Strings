@@ -1,0 +1,25 @@
+---
+
+---
+import TuitionCalculator from '../components/Calculator.tsx'
+
+# Investment & Policies
+
+We believe in transparent pricing. Whether you are joining the **River City Youth Strings** or taking private lessons, here is what you can expect.
+
+### Monthly Tuition
+
+Tuition is paid monthly. Use the tool below to estimate your costs based on your lesson length.
+
+<TuitionCalculator 
+  client:load 
+  hourlyRate={props.rates.hour} 
+  fortyFiveRate={props.rates.fortyFive} 
+  thirtyRate={props.rates.halfHour} 
+/>
+
+### Attendance Policy
+
+Please provide **24 hours notice** for cancellations.
+
+Make-up lessons are offered based on teacher availability.
