@@ -63,12 +63,42 @@ export default {
       options: {hotspot: true},
     },
 
-    // --- CONTAC BOX ---
+    // --- Students Thrive ---
     {
-      name: 'contactBoxImage',
+      name: 'thriveTitle',
+      type: 'text',
+      title: 'Thrive Title',
+      initialValeu: 'Students Thrive at River City Strings',
+    },
+    {
+      name: 'thriveText',
+      type: 'text',
+      title: 'Thrive Text',
+      initialValue: '',
+    },
+    {
+      name: 'thriveImage',
       type: 'image',
-      title: 'Contact Box Image',
+      title: 'Thrive Image',
       options: {hotspot: true},
+    },
+    {
+      name: 'thriveFeatures',
+      type: 'array',
+      title: 'Thrive Features',
+      description: '',
+      of: [
+        {
+          type: 'object',
+          name: 'featureItem',
+          title: 'Feature Item',
+          fields: [
+            {name: 'featureImage', type: 'image', title: 'Feature Image', options: {hotspot: true}},
+            {name: 'title', type: 'string', title: 'Feature Title'},
+            {name: 'description', type: 'text', title: 'Short Description'},
+          ],
+        },
+      ],
     },
   ],
 }

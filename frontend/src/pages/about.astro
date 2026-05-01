@@ -10,15 +10,18 @@ const homeData = await sanityClient.fetch(`*[_type == "aboutPage"][0]`)
 // If no data exists yet, we provide fallbacks so the site doesn't crash
 const {
   heroTitle = 'Inspiring Musicians.',
-  heroSubtitle = 'Building Confidence. Creating Community.',
-  heroDescription = 'Violin, Viola, Cello & Bass instruction, youth orchestra, and professional musicians for events',
   welcomeImage = '',
   welcomeTitle = 'Welcome Title',
   welcomeText = 'Welcome Text',
+  welcomeText2 = 'Welcome Text 2',
+  welcomeImage2 = '',
   founderName = 'Teresa Bellamy',
   founderBio = [],
   founderImage = 'Founder Image',
-  services = [],
+  thriveTitle = '',
+  thriveText = '',
+  thriveImage = '',
+  thriveFeatures = [],
 } = homeData || {}
 
 // Build Sanity image URL if welcomeImage exists
@@ -29,23 +32,23 @@ function urlFor(source: any) {
 }
 const welcomeImageUrl =
   welcomeImage && welcomeImage.asset ? builder.image(welcomeImage).url() : ''
+const welcomeImageUrl2 =
+  welcomeImage2 && welcomeImage2.asset ? builder.image(welcomeImage2).url() : ''
 const founderImageUrl =
   founderImage && founderImage.asset ? builder.image(founderImage).url() : ''
+const thriveImageUrl =
+  thriveImage && thriveImage.asset ? builder.image(thriveImage).url() : ''
 ---
 
-<BaseLayout title="Home">
-  <section class="hero">
+<BaseLayout title="About">
+  <section class="page-hero about-hero hero">
     <div class="hero-content">
       <h1>{heroTitle}</h1>
-      <h2>{heroSubtitle}</h2>
-      <p>{heroDescription}</p>
-      <a href="/contact" class="btn btn-primary">Book a Lesson</a>
-      <a href="/contact" class="btn btn-secondary">Explore Services</a>
     </div>
     <img src="../../src/assets/images/home/bg-img.jpg" alt="" />
   </section>
 
-  <section class="welcome container">
+  <section class="welcome about-welcome container">
     <div class="welcome-img">
       {welcomeImageUrl && <img src={welcomeImageUrl} alt="Welcome" />}
     </div>
@@ -55,7 +58,15 @@ const founderImageUrl =
         <i>{welcomeTitle.split('\n')[1]}</i>
       </h3>
       <p set:html={welcomeText.replace(/\n/g, '<br />')} />
-      <button class="btn">learn more</button>
+    </div>
+  </section>
+
+  <section class="welcome about-welcome2 container">
+    <div class="welcome-content">
+      <p set:html={welcomeText2.replace(/\n/g, '<br />')} />
+    </div>
+    <div class="welcome-img">
+      {welcomeImageUrl2 && <img src={welcomeImageUrl2} alt="Welcome" />}
     </div>
   </section>
 
@@ -74,49 +85,61 @@ const founderImageUrl =
     </div>
   </section>
 
-  <section class="services">
-    <div class="title">
-      <h3>Our Programs <br /> <span class="italic">& Services</span></h3>
-      <p class="arrow"><img src="../../public/arrow.svg" alt="" /></p>
+  <section class="wws">
+    <div class="wws-box-content">
+      <h3>Who We <span class="italic">Serve</span></h3>
+      <ul>
+        <li>
+          <img src="../../public/Star.svg" alt="" /><p>Children ages 2–18</p>
+        </li>
+        <li>
+          <img src="../../public/Star.svg" alt="" /><p>
+            Adult beginners and returning musicians
+          </p>
+        </li>
+        <li>
+          <img src="../../public/Star.svg" alt="" /><p>
+            Students seeking ensemble and chamber music experience
+          </p>
+        </li>
+        <li>
+          <img src="../../public/Star.svg" alt="" /><p>
+            Event planners and couples needing live string music
+          </p>
+        </li>
+        <li>
+          <img src="../../public/Star.svg" alt="" /><p>
+            Church musicians, music directors, and orchestra school directors
+          </p>
+        </li>
+      </ul>
     </div>
-    <div class="card-container">
-      {
-        services.map((service: any) => (
-          <div class="service-card">
-            <div class="img">
-              {service.serviceImage && service.serviceImage.asset && (
-                <img
-                  src={urlFor(service.serviceImage).url()}
-                  alt={service.title}
-                />
-              )}
-              <div>
-                <span>{service.bubbleText}</span>
-              </div>
-            </div>
-            <div class="service-content">
-              <h4>{service.title}</h4>
-              <p>{service.description}</p>
-              <a href={service.link} class="cta">
-                {service.buttonText || 'Learn More'}
-              </a>
-            </div>
-          </div>
-        ))
-      }
+    <div class="wws-box-img">
+      <img src="../../src/assets/images/about/about-img.jpg" alt="" />
     </div>
   </section>
 
-  <section class="contact-box">
-    <div class="contact-box-img"><img src="../../src/assets/images/main/contact-box.jpg" alt=""></div>
-    <div class="contact-box-content">
-      <h3>Get in <span class="italic">Touch</span></h3>
-      <p>Interested in lessons, programs, or event music? We’d love to hear from you.</p>
-      <ul>
-        <li><img src="../../public/location.svg" alt=""> Serving Grand Rapids & surrounding areas</li>
-        <li><img src="../../public/Phone.svg" alt=""> <a href="tel:+(312) 889-3508">(312) 889-3508</a></li>
-        <li><img src="../../public/email.svg" alt=""> <a href="mailto:music.rccmc@gmail.com">music.rccmc@gmail.com</a></li>
-      </ul>
+  <section class="thrive">
+    <div class="thrive-content">
+      <h3>
+        {thriveTitle.split('\n')[0]}<br />
+        <i>{thriveTitle.split('\n')[1]}</i>
+      </h3>
+      <p>{thriveText}</p>
+      <div class="img">
+        {thriveImageUrl && <img src={thriveImageUrl} alt="" />}
+      </div>
+    </div>
+    <div class="thrive-feature">
+      {thriveFeatures.map((feature:any) => (
+       <div class="feature-line">
+        <img src={urlFor(feature.featureImage).url()} alt='' />
+        <h5>{feature.title}</h5>
+       </div>
+       <div class="feature-content">
+        <p>{feature.description}</p>
+       </div>
+      ))}
     </div>
   </section>
 </BaseLayout>

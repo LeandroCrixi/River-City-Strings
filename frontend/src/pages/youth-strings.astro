@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/MainLayout.astro'
+import { sanityClient } from 'sanity:client'
+import { createImageUrlBuilder } from '@sanity/image-url'
+import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
+
+// Fetch the Home Page data
+const homeData = await sanityClient.fetch(`*[_type == "youthStringsPage"][0]`)
+
+// If no data exists yet, we provide fallbacks so the site doesn't crash
+const {
+  heroTitle = 'Inspiring Musicians.',
+  heroSubtitle = 'Building Confidence. Creating Community.',
+  welcomeTitle = '',
+  welcomeText = '',
+  welcomeImage = '',
+  featuresPrice = [],
+  tuitionPrice = '',
+} = homeData || {}
+
+// Build Sanity image URL if welcomeImage exists
+const builder = createImageUrlBuilder(sanityClient)
+// Helper function to make the HTML cleaner
+function urlFor(source: any) {
+  return builder.image(source)
+}
+const welcomeImageUrl =
+  welcomeImage && welcomeImage.asset ? builder.image(welcomeImage).url() : ''
+---
+
+<BaseLayout title="Youth Strings Page">
+  <section class="youth-hero page-hero hero">
+    <div class="hero-content">
+      <h1>{heroTitle}</h1>
+      <p>{heroSubtitle}</p>
+    </div>
+    <img src="../../src/assets/images/home/bg-img.jpg" alt="" />
+  </section>
+
+  <section class="youth-welcome welcome container">
+    <div class="welcome-content">
+      <h3>
+        {welcomeTitle.split('\n')[0]}<br />
+        <i>{welcomeTitle.split('\n')[1]}</i>
+      </h3>
+      <p set:html={welcomeText.replace(/\n/g, '<br />')} />
+    </div>
+    <div class="welcome-img">
+      {welcomeImageUrl && <img src={welcomeImageUrl} alt="Welcome" />}
+    </div>
+  </section>
+
+  <section class="youth-price">
+    <a href="https://maps.app.goo.gl/2MAx9QmCn3ncJKVS6" target="_blank">
+      <ul class="container price">
+        {
+          featuresPrice.map((feature: any) => (
+            <li>
+              <span>
+                <img src={urlFor(feature.serviceImage).url()} alt="" />{' '}
+              </span>
+              <p>{feature.title}</p>
+              <span>{feature.description}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </a>
+  </section>
+
+  <section class="feature-box container">
+    <div class="tuition">
+      <h4>Semester Tuition</h4>
+      <span>${tuitionPrice}</span>
+      <p>Per semester</p>
+      <h5>Required Materials</h5>
+      <ul>
+        <li><img src="../../public/check.svg" alt="" /> Instrument (rental options available)</li>
+        <li><img src="../../public/check.svg" alt="" />I Can Read Music Volume 1</li>
+        <li><img src="../../public/check.svg" alt="" />Music stand</li>
+        <li><img src="../../public/check.svg" alt="" />Tuner</li>
+        <li><img src="../../public/check.svg" alt="" />Metronome</li>
+      </ul>
+    </div>
+    <div class="highlights">
+      <h4>Program Highlights</h4>
+      <ul>
+        <li><img src="../../public/check.svg" alt="" />Weekly rehearsals building ensemble skills</li>
+        <li><img src="../../public/check.svg" alt="" />End-of-semester concerts for family and friends</li>
+        <li><img src="../../public/check.svg" alt="" />Supportive, encouraging environment</li>
+        <li><img src="../../public/check.svg" alt="" />Develop musicianship and teamwork</li>
+        <li><img src="../../public/check.svg" alt="" />Learn from an experienced conductor</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

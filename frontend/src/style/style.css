@@ -12,4 +12,7 @@
 
 /* Importing pages styles */
 @import './modules/home.css';
+@import './modules/about.css';
+@import './modules/lessons.css';
+@import './modules/youth-strings.css';
 @import './modules/investment.css';

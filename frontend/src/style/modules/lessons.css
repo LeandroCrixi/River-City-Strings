@@ -1,0 +1,107 @@
+.lessons-welcome {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px 100px 0px 100px;
+  align-items: center;
+  & .welcome-content {
+    & h3 {
+      font: var(--font-h3);
+    }
+    & p {
+      font: var(--font-p2);
+      color: var(--rich-navy);
+    }
+
+    & h4 {
+      font: var(--font-h5);
+      color: var(--rich-navy);
+      padding-bottom: 20px;
+    }
+
+    & ul li {
+      display: flex;
+      padding-bottom: 20px;
+      gap: 20px;
+      font: var(--font-p2);
+      color: var(--rich-navy);
+      align-items: center;
+    }
+  }
+  & .welcome-price {
+    border: 2px solid var(--golden-beige);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    & h4 {
+      font: var(--font-h5);
+      color: var(--rich-navy);
+    }
+    & p {
+      font: var(--font-p2);
+      padding-top: 10px;
+    }
+    & ul {
+      padding: 20px 20px 0px 20px;
+      & li {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid var(--golden-beige);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        font: var(--font-p1);
+        &:nth-child(2) {
+          background: linear-gradient(
+            to right,
+            rgba(226, 200, 154, 0.2),
+            white
+          );
+        }
+        &:hover {
+          background: linear-gradient(
+            to right,
+            rgba(226, 200, 154, 0.8),
+            white
+          );
+        }
+        & span {
+          color: var(--rich-navy);
+          &:first-child {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            align-content: center;
+          }
+        }
+      }
+    }
+    & button {
+      margin: 20px 0px;
+    }
+  }
+}
+
+@media (max-width: 1030px) {
+  .lessons-welcome {
+    padding: 20px 40px;
+    & .welcome-content {
+      & h3 {
+        font: var(--font-h4);
+      }
+      & ul li {
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media (max-width: 430px){
+  .lessons-welcome{
+    grid-template-columns: 1fr;
+    padding: 20px;
+
+    & ul {
+      padding-left: 40px;
+    }
+  }
+}

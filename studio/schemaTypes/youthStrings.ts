@@ -1,7 +1,7 @@
 export default {
-  name: 'lessonsPage',
+  name: 'youthStringsPage',
   type: 'document',
-  title: 'Lessons Page',
+  title: 'Youth Strings Page',
   fields: [
     // --- HERO SECTION ---
     {
@@ -31,40 +31,13 @@ export default {
       description: 'Simple welcome text for the homepage',
     },
     {
-      name: 'featuresTitle',
-      type: 'text',
-      title: 'Features Title',
-      description: 'Simple welcome text for the homepage',
-    },
-    {
-      name: 'features',
-      type: 'array',
-      title: 'Features',
-      description: '',
-      of: [
-        {
-          type: 'object',
-          name: 'featureItem',
-          title: 'Feature Item',
-          fields: [{name: 'description', type: 'text', title: 'Short Description'}],
-        },
-      ],
+      name: 'welcomeImage',
+      type: 'image',
+      title: 'Welcome Image',
+      options: {hotspot: true},
     },
 
     // --- PRICE BOX ---
-
-    {
-      name: 'priceTitle',
-      type: 'string',
-      title: 'Price Title',
-      initialValue: '',
-    },
-    {
-      name: 'priceText',
-      type: 'text',
-      title: 'Price Text',
-      description: '',
-    },
     {
       name: 'featuresPrice',
       type: 'array',
@@ -76,11 +49,17 @@ export default {
           name: 'item',
           title: 'Item',
           fields: [
-            {name: 'priceMinutes', type: 'number', title: 'Price Minutes'},
-            {name: 'price', type: 'number', title: 'Price'},
+            {name: 'serviceImage', type: 'image', title: 'Service Image', options: {hotspot: true}},
+            {name: 'title', type: 'string', title: 'Service Title'},
+            {name: 'description', type: 'text', title: 'Short Description'},
           ],
         },
       ],
+    },
+    {
+      name: 'tuitionPrice',
+      type: 'number',
+      title: 'Tuition Price',
     },
   ],
 }
