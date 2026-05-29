@@ -36,16 +36,16 @@ const founderImageUrl =
 ---
 
 <BaseLayout title="Home">
-  <div class="status-container">
+  <!-- <div class="status-container">
     <StatusBadge client:load isAccepting={isAcceptingStudents} />
-  </div>
+  </div> -->
   <section class="hero">
     <div class="hero-content">
       <h1>{heroTitle}</h1>
       <h2>{heroSubtitle}</h2>
       <p>{heroDescription}</p>
       <a href="/contact" class="btn btn-primary">Book a Lesson</a>
-      <a href="/contact" class="btn btn-secondary">Explore Services</a>
+      <a href="/contact" class="btn btn-primary">Explore Services</a>
     </div>
     <img src="../../src/assets/images/home/bg-img.jpg" alt="" />
   </section>
@@ -60,7 +60,7 @@ const founderImageUrl =
         <i>{welcomeTitle.split('\n')[1]}</i>
       </h3>
       <p set:html={welcomeText.replace(/\n/g, '<br />')} />
-      <button class="btn">learn more</button>
+      <button class="btn">Learn more</button>
     </div>
   </section>
 
@@ -104,7 +104,7 @@ const founderImageUrl =
               <p>{service.description}</p>
               <a href={service.link} class="cta">
                 {service.buttonText || 'Learn More'}
-              </a>
+              </a>&nbsp →
             </div>
           </div>
         ))

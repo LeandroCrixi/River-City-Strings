@@ -28,8 +28,7 @@
     }
   }
   & .welcome-price {
-    border: 2px solid var(--golden-beige);
-    border-radius: 20px;
+    background: var(--mist-gray);
     padding: 20px;
     text-align: center;
     & h4 {
@@ -45,7 +44,7 @@
       & li {
         display: flex;
         justify-content: space-between;
-        border: 1px solid var(--golden-beige);
+        border: 1px solid var(--rich-navy);
         border-radius: 10px;
         padding: 20px;
         margin-bottom: 20px;
@@ -95,8 +94,8 @@
   }
 }
 
-@media (max-width: 430px){
-  .lessons-welcome{
+@media (max-width: 430px) {
+  .lessons-welcome {
     grid-template-columns: 1fr;
     padding: 20px;
 

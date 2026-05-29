@@ -61,5 +61,37 @@ export default {
       type: 'number',
       title: 'Tuition Price',
     },
+
+    // --- PROGRAMS REQUIREMETNS SECTION ---
+    {
+      name: 'programsReq',
+      type: 'array',
+      title: 'Programs Requirements',
+      description: '',
+      of: [
+        {
+          type: 'object',
+          name: 'item',
+          title: 'Item',
+          fields: [
+            {name: 'title', type: 'string', title: 'Title'},
+            {name: 'details', type: 'string', title: 'Details'},
+            {
+              name: 'req',
+              type: 'array',
+              description: '',
+              of: [
+                {
+                  type: 'object',
+                  name: 'item',
+                  title: 'Item',
+                  fields: [{name: 'req', type: 'string', title: 'Requirements'}],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ],
 }

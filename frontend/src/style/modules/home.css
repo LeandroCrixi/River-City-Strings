@@ -226,6 +226,14 @@
           color: var(--rich-navy);
           padding: 10px 60px 20px 0px;
         }
+        & ul {
+          padding: 20px 0px;
+          & li {
+            font: var(--font-p2);
+            line-height: 2;
+            list-style: square;
+          }
+        }
       }
     }
   }

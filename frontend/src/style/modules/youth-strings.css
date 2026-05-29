@@ -144,3 +144,30 @@
     }
   }
 }
+
+
+.programs-req{
+  & .card-container{
+    & .service-card{
+      & .service-content{
+        & p{
+          font: var(--font-p1);
+        }
+      }
+    }
+  }
+}
+
+.extra-info {
+  text-align: center;
+  padding-bottom: 40px;
+  & h4{
+    font: var(--font-h3);
+    color: var(--rich-navy);
+    padding-bottom: 20px;
+  }
+  & p{
+    font: var(--font-p2);
+    padding: 10px 0px;
+  }
+}
