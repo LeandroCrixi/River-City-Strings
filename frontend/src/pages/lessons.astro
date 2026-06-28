@@ -55,7 +55,7 @@ function urlFor(source: any) {
         {
           features.map((feature: any) => (
             <li>
-              <img src="../../public/check.svg" alt="" />
+              <img src="/check.svg" alt="" />
               {/* <Image src={check} alt='' /> */}
               {feature.description}
             </li>
@@ -71,8 +71,8 @@ function urlFor(source: any) {
           featuresPrice.map((features: any) => (
             <li>
               <span>
-                {/* <img src="../../public/clock.svg" alt="" /> */}
-                <Image src={clock} alt=''/>
+                <img src="/clock.svg" alt="" />
+                {/* <Image src={clock} alt=''/> */}
                 {' '} {features.priceMinutes + ' minutes'}</span>{' '}
               <span>{'$' + features.price}</span>
             </li>
