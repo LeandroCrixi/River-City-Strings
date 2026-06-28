@@ -6,7 +6,7 @@ import { createImageUrlBuilder } from '@sanity/image-url'
 import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
 import StatusBadge from '../components/StatusBadge.tsx'
 import heroImg from '../../src/assets/images/home/bg-img.jpg';
-import arrow from '../../public/arrow.svg'
+import arrow from '../../src/icons/arrow.svg'
 
 // Fetch the Home Page data
 const homeData = await sanityClient.fetch(`*[_type == "homePage"][0]`)
@@ -87,8 +87,8 @@ const founderImageUrl =
     <div class="title">
       <h3>Our Programs <br /> <span class="italic">& Services</span></h3>
       <p class="arrow">
-        <img src="/arrow.svg" alt="">
-        <!-- <Image src={arrow} alt="" /> -->
+        <!-- <img src="/arrow.svg" alt=""> -->
+        <Image src={arrow} alt="" />
       </p>
     </div>
     <div class="card-container">

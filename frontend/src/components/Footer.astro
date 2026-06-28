@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets'
 import logo from '../assets/images/main/Logo2.svg'
-import location from '../../public/location.svg'
-import phone from '../../public/Phone.svg'
-import email from '../../public/email.svg'
+import location from '../../src/icons/location.svg'
+import phone from '../../src/icons/Phone.svg'
+import email from '../../src/icons/email.svg'
 import { emoji } from 'astro:schema'
 ---
 
@@ -30,16 +30,16 @@ import { emoji } from 'astro:schema'
   <div class="contact">
     <ul>
       <li>
-        <img src="/location.svg" alt="" />
-         <!-- <Image src={location} alt="" /> -->
+        <!-- <img src="/location.svg" alt="" /> -->
+         <Image src={location} alt="" />
          Serving Grand Rapids & surrounding areas</li>
       <li>
-        <img src="/phone.svg" alt="" /> 
-         <!-- <Image src={phone} alt="" /> -->
+        <!-- <img src="/phone.svg" alt="" />  -->
+         <Image src={phone} alt="" />
         <a href="tel:+(312) 889-3508">(312) 889-3508</a></li>
       <li>
-        <img src="/email.svg" alt="" />
-         <!-- <Image src={email} alt="" /> -->
+        <!-- <img src="/email.svg" alt="" /> -->
+         <Image src={email} alt="" />
         <a href="mailto:music.rccmc@gmail.com">music.rccmc@gmail.com</a></li>
     </ul>
   </div>
