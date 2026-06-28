@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import contactImg from '../../src/assets/images/main/contact-box.jpg'
 import location from '../../src/assets/icons/location.svg'
 import phone from '../../src/assets/icons/phone.svg'
 import email from '../../src/assets/icons/email.svg'
@@ -7,7 +8,8 @@ import email from '../../src/assets/icons/email.svg'
 
 <section class="contact-box">
   <div class="contact-box-img">
-    <img src="../../src/assets/images/main/contact-box.jpg" alt="" />
+    <!-- <img src="../../src/assets/images/main/contact-box.jpg" alt="" /> -->
+     <Image src={contactImg} alt='' />
   </div>
   <div class="contact-box-content">
     <h3>Get in <span class="italic">Touch</span></h3>
