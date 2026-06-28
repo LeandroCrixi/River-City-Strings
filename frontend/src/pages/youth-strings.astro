@@ -28,8 +28,7 @@ const builder = createImageUrlBuilder(sanityClient)
 function urlFor(source: any) {
   return builder.image(source)
 }
-const welcomeImageUrl =
-  welcomeImage && welcomeImage.asset ? builder.image(welcomeImage).url() : ''
+const welcomeImageUrl = welcomeImage && welcomeImage.asset ? builder.image(welcomeImage).url() : ''
 ---
 
 <BaseLayout title="Youth Strings Page">
@@ -39,7 +38,7 @@ const welcomeImageUrl =
       <p>{heroSubtitle}</p>
     </div>
     <!-- <img src="../../src/assets/images/home/bg-img.jpg" alt="" /> -->
-    <Image src={heroImg} alt='' />
+    <Image src={heroImg} alt="" />
   </section>
 
   <section class="youth-welcome welcome container">
@@ -124,7 +123,7 @@ const welcomeImageUrl =
       <h3>Our Semester <br /> <span class="italic">Plan</span></h3>
       <p class="arrow">
         <!-- <img src="../../public/arrow.svg" alt="" /> -->
-         <Image src={arrow} alt='' />
+        <Image src={arrow} alt="" />
       </p>
     </div>
     <div class="card-container">
@@ -149,13 +148,12 @@ const welcomeImageUrl =
   <section class="extra-info container">
     <h4>Program Experience</h4>
     <p>
-      River City Youth Strings provides a positive first orchestra experience
-      where students learn collaboration, responsibility, and musical
-      expression.
+      River City Youth Strings provides a positive first orchestra experience where students learn collaboration,
+      responsibility, and musical expression.
     </p>
     <p>
-      Rehearsals are structured yet encouraging, allowing students to grow at
-      their own pace while feeling part of a musical community.
+      Rehearsals are structured yet encouraging, allowing students to grow at their own pace while feeling part of a
+      musical community.
     </p>
   </section>
 </BaseLayout>
