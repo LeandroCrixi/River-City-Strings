@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../layouts/MainLayout.astro'
 import { sanityClient } from 'sanity:client'
+import { Image } from 'astro:assets';
 import { createImageUrlBuilder } from '@sanity/image-url'
 import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
 import StatusBadge from '../components/StatusBadge.tsx'
+import heroImg from '../../src/assets/images/home/bg-img.jpg';
+import arrow from '../../public/arrow.svg'
 
 // Fetch the Home Page data
 const homeData = await sanityClient.fetch(`*[_type == "homePage"][0]`)
@@ -47,7 +50,8 @@ const founderImageUrl =
       <a href="/contact" class="btn btn-primary">Book a Lesson</a>
       <a href="/contact" class="btn btn-primary">Explore Services</a>
     </div>
-    <img src="../../src/assets/images/home/bg-img.jpg" alt="" />
+    <!-- <img src="../../src/assets/images/home/bg-img.jpg" alt="" /> -->
+     <Image src={heroImg} alt="Teresa Bellamy conducting River City Youth Strings" />
   </section>
 
   <section class="welcome container">
@@ -82,7 +86,9 @@ const founderImageUrl =
   <section class="services">
     <div class="title">
       <h3>Our Programs <br /> <span class="italic">& Services</span></h3>
-      <p class="arrow"><img src="../../public/arrow.svg" alt="" /></p>
+      <p class="arrow">
+        <Image src={arrow} alt="" />
+      </p>
     </div>
     <div class="card-container">
       {

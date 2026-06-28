@@ -1,5 +1,8 @@
 ---
-
+import { Image } from 'astro:assets';
+import location from '../../public/location.svg'
+import phone from '../../public/Phone.svg'
+import email from '../../public/email.svg'
 ---
 
 <section class="contact-box">
@@ -14,15 +17,18 @@
     </p>
     <ul>
       <li>
-        <img src="../../public/location.svg" alt="" /> Serving Grand Rapids & surrounding
-        areas
+        <!-- <img src="../../public/location.svg" alt="" /> -->
+        <Image src={location} alt="" />
+         Serving Grand Rapids & surrounding areas
       </li>
       <li>
-        <img src="../../public/Phone.svg" alt="" />
+        <!-- <img src="../../public/Phone.svg" alt="" /> -->
+        <Image src={phone} alt='' />
         <a href="tel:+(312) 889-3508">(312) 889-3508</a>
       </li>
       <li>
-        <img src="../../public/email.svg" alt="" />
+        <!-- <img src="../../public/email.svg" alt="" /> -->
+        <Image src={email} alt='' />
         <a href="mailto:music.rccmc@gmail.com">music.rccmc@gmail.com</a>
       </li>
     </ul>

@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/MainLayout.astro'
 import { sanityClient } from 'sanity:client'
 import { createImageUrlBuilder } from '@sanity/image-url'
 import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
+import { Image } from 'astro:assets'
+import heroImg from '../../src/assets/images/home/bg-img.jpg'
+import check from '../../public/check.svg'
+import clock from '../../public/clock.svg'
 
 // Fetch the Home Page data
 const homeData = await sanityClient.fetch(`*[_type == "lessonsPage"][0]`)
@@ -34,7 +38,8 @@ function urlFor(source: any) {
       <h1>{heroTitle}</h1>
       <p>{heroSubtitle}</p>
     </div>
-    <img src="../../src/assets/images/home/bg-img.jpg" alt="" />
+    <!-- <img src="../../src/assets/images/home/bg-img.jpg" alt="" /> -->
+     <Image src={heroImg} alt='' />
   </section>
 
   <section class="lessons-welcome welcome container">
@@ -50,7 +55,8 @@ function urlFor(source: any) {
         {
           features.map((feature: any) => (
             <li>
-              <img src="../../public/check.svg" alt="" />
+              {/* <img src="../../public/check.svg" alt="" /> */}
+              <Image src={check} alt='' />
               {feature.description}
             </li>
           ))
@@ -64,7 +70,10 @@ function urlFor(source: any) {
         {
           featuresPrice.map((features: any) => (
             <li>
-              <span><img src="../../public/clock.svg" alt="" />{' '} {features.priceMinutes + ' minutes'}</span>{' '}
+              <span>
+                {/* <img src="../../public/clock.svg" alt="" /> */}
+                <Image src={clock} alt=''/>
+                {' '} {features.priceMinutes + ' minutes'}</span>{' '}
               <span>{'$' + features.price}</span>
             </li>
           ))

@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/MainLayout.astro'
 import { sanityClient } from 'sanity:client'
 import { createImageUrlBuilder } from '@sanity/image-url'
 import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
+import { Image } from 'astro:assets';
+import heroImg from '../../src/assets/images/home/bg-img.jpg'
+import star from '../../public/Star.svg'
+import aboutImg from '../../src/assets/images/about/about-img.jpg'
 
 // Fetch the Home Page data
 const homeData = await sanityClient.fetch(`*[_type == "aboutPage"][0]`)
@@ -45,7 +49,8 @@ const thriveImageUrl =
     <div class="hero-content">
       <h1>{heroTitle}</h1>
     </div>
-    <img src="../../src/assets/images/home/bg-img.jpg" alt="" />
+    <!-- <img src="../../src/assets/images/home/bg-img.jpg" alt="" /> -->
+    <Image src={heroImg} alt="Teresa Bellamy conducting River City Youth Strings" />
   </section>
 
   <section class="welcome about-welcome container">
@@ -90,32 +95,43 @@ const thriveImageUrl =
       <h3>Who We <span class="italic">Serve</span></h3>
       <ul>
         <li>
-          <img src="../../public/Star.svg" alt="" /><p>Children ages 2–18</p>
+          <!-- <img src="../../public/Star.svg" alt="" /> -->
+           <Image src={star} alt='' />
+          <p>Children ages 2–18</p>
         </li>
         <li>
-          <img src="../../public/Star.svg" alt="" /><p>
+          <!-- <img src="../../public/Star.svg" alt="" /> -->
+           <Image src={star} alt='' />
+          <p>
             Adult beginners and returning musicians
           </p>
         </li>
         <li>
-          <img src="../../public/Star.svg" alt="" /><p>
+          <!-- <img src="../../public/Star.svg" alt="" /> -->
+           <Image src={star} alt='' />
+          <p>
             Students seeking ensemble and chamber music experience
           </p>
         </li>
         <li>
-          <img src="../../public/Star.svg" alt="" /><p>
+          <!-- <img src="../../public/Star.svg" alt="" /> -->
+           <Image src={star} alt='' />
+          <p>
             Event planners and couples needing live string music
           </p>
         </li>
         <li>
-          <img src="../../public/Star.svg" alt="" /><p>
+          <!-- <img src="../../public/Star.svg" alt="" /> -->
+           <Image src={star} alt='' />
+          <p>
             Church musicians, music directors, and orchestra school directors
           </p>
         </li>
       </ul>
     </div>
     <div class="wws-box-img">
-      <img src="../../src/assets/images/about/about-img.jpg" alt="" />
+      <!-- <img src="../../src/assets/images/about/about-img.jpg" alt="" /> -->
+      <Image src={aboutImg} alt='' />
     </div>
   </section>
 
