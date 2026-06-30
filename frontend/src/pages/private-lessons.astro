@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/MainLayout.astro'
+import { sanityClient } from 'sanity:client'
+import { createImageUrlBuilder } from '@sanity/image-url'
+import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
+import { Image } from 'astro:assets'
+import heroImg from '../../src/assets/images/home/bg-img.jpg'
+import check from '../../src/assets/icons/check.svg'
+import clock from '../../src/assets/icons/clock.svg'
+
+// Fetch the Home Page data
+const homeData = await sanityClient.fetch(`*[_type == "lessonsPage"][0]`)
+
+// If no data exists yet, we provide fallbacks so the site doesn't crash
+const {
+  heroTitle = 'Inspiring Musicians.',
+  heroSubtitle = 'Building Confidence. Creating Community.',
+  welcomeTitle = '',
+  welcomeText = '',
+  featuresTitle = '',
+  features = [],
+  priceTitle = '',
+  priceText = '',
+  featuresPrice = [],
+} = homeData || {}
+
+// Build Sanity image URL if welcomeImage exists
+const builder = createImageUrlBuilder(sanityClient)
+// Helper function to make the HTML cleaner
+function urlFor(source: any) {
+  return builder.image(source)
+}
+---
+
+<BaseLayout title="Private Lessons">
+  <section class="lessons-hero page-hero hero">
+    <div class="hero-content">
+      <h1>{heroTitle}</h1>
+      <p>{heroSubtitle}</p>
+    </div>
+     <Image src={heroImg} alt='' />
+  </section>
+
+  <section class="lessons-welcome welcome container">
+    <div class="welcome-content">
+      <h3>
+        {welcomeTitle.split('\n')[0]}<br />
+        <i>{welcomeTitle.split('\n')[1]}</i>
+      </h3>
+      <p set:html={welcomeText.replace(/\n/g, '<br />')} />
+
+      <h4>{featuresTitle}</h4>
+      <ul>
+        {
+          features.map((feature: any) => (
+            <li>
+              <Image src={check} alt='' />
+              {feature.description}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="welcome-price">
+      <h4>{priceTitle}</h4>
+      <p>{priceText}</p>
+      <ul>
+        {
+          featuresPrice.map((features: any) => (
+            <li>
+              <span>
+                <Image src={clock} alt=''/>
+                {' '} {features.priceMinutes + ' minutes'}</span>{' '}
+              <span>{'$' + features.price}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p>Per session pricing. Lessons are scheduled weekly.</p>
+      <button class="btn">Register for Lessons</button>
+      <br />
+      <span>Or call (616) 822-6252</span>
+    </div>
+  </section>
+</BaseLayout>

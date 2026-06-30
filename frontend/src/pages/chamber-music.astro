@@ -2,14 +2,14 @@
 import BaseLayout from '../layouts/MainLayout.astro'
 import { sanityClient } from 'sanity:client'
 import { createImageUrlBuilder } from '@sanity/image-url'
-import PortableTextRenderer from '../components/PortableTextRenderer.tsx'
 import { Image } from 'astro:assets'
 import heroImg from '../../src/assets/images/home/bg-img.jpg'
+import arrow from '../../src/assets/icons/arrow.svg'
 import check from '../../src/assets/icons/check.svg'
 import clock from '../../src/assets/icons/clock.svg'
 
 // Fetch the Home Page data
-const homeData = await sanityClient.fetch(`*[_type == "lessonsPage"][0]`)
+const homeData = await sanityClient.fetch(`*[_type == "chamberPage"][0]`)
 
 // If no data exists yet, we provide fallbacks so the site doesn't crash
 const {
@@ -17,11 +17,15 @@ const {
   heroSubtitle = 'Building Confidence. Creating Community.',
   welcomeTitle = '',
   welcomeText = '',
+  welcomeImage = '',
+  featuresPrice = [],
+  tuitionPrice = '',
   featuresTitle = '',
-  features = [],
   priceTitle = '',
   priceText = '',
-  featuresPrice = [],
+  features = [],
+
+  programsReq = [],
 } = homeData || {}
 
 // Build Sanity image URL if welcomeImage exists
@@ -30,6 +34,7 @@ const builder = createImageUrlBuilder(sanityClient)
 function urlFor(source: any) {
   return builder.image(source)
 }
+const welcomeImageUrl = welcomeImage && welcomeImage.asset ? builder.image(welcomeImage).url() : ''
 ---
 
 <BaseLayout title="Private Lessons">
@@ -38,11 +43,31 @@ function urlFor(source: any) {
       <h1>{heroTitle}</h1>
       <p>{heroSubtitle}</p>
     </div>
-    <!-- <img src="../../src/assets/images/home/bg-img.jpg" alt="" /> -->
-     <Image src={heroImg} alt='' />
+    <Image src={heroImg} alt="" />
   </section>
 
   <section class="lessons-welcome welcome container">
+    <div class="welcome-price">
+      <h4>{priceText}</h4>
+      <h2>{priceTitle}</h2>
+      <ul>
+        {
+          featuresPrice.map((features: any) => (
+            <li>
+              <span>
+                {/* <Image src={clock} alt="" />  */}
+                {features.priceMinutes}
+              </span>{' '}
+              <span>{features.price}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p>Join a Coaching Session</p>
+      <button class="btn">Get Started</button>
+      <br />
+      <span>Or call <a href="tel:+1(616) 822-6252">(616) 822-6252</a></span>
+    </div>
     <div class="welcome-content">
       <h3>
         {welcomeTitle.split('\n')[0]}<br />
@@ -55,34 +80,12 @@ function urlFor(source: any) {
         {
           features.map((feature: any) => (
             <li>
-              {/* <img src="/check.svg" alt="" /> */}
-              <Image src={check} alt='' />
+              <Image src={check} alt="" />
               {feature.description}
             </li>
           ))
         }
       </ul>
-    </div>
-    <div class="welcome-price">
-      <h4>{priceTitle}</h4>
-      <p>{priceText}</p>
-      <ul>
-        {
-          featuresPrice.map((features: any) => (
-            <li>
-              <span>
-                {/* <img src="/clock.svg" alt="" /> */}
-                <Image src={clock} alt=''/>
-                {' '} {features.priceMinutes + ' minutes'}</span>{' '}
-              <span>{'$' + features.price}</span>
-            </li>
-          ))
-        }
-      </ul>
-      <p>Per session pricing. Lessons are scheduled weekly.</p>
-      <button class="btn">Register for Lessons</button>
-      <br />
-      <span>Or call (616) 822-6252</span>
     </div>
   </section>
 </BaseLayout>
