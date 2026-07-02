@@ -42,7 +42,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1180px) {
   .menu {
     margin-right: 40px;
 
@@ -74,9 +74,9 @@
     transform: translateX(0);
   }
 
-  .nav-menu.active li:nth-child(2) {
+  /* .nav-menu.active li:nth-child(2) {
     display: none;
-  }
+  } */
 
   .close-menu {
     display: block;

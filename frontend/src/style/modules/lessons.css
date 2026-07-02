@@ -80,6 +80,10 @@
   }
 }
 
+@media (max-width: 1030px){
+  
+}
+
 @media (max-width: 1030px) {
   .lessons-welcome {
     padding: 20px 40px;
@@ -94,7 +98,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 667px) {
   .lessons-welcome {
     grid-template-columns: 1fr;
     padding: 20px;

@@ -17,12 +17,20 @@
 @media (max-width: 440px) {
   .about-welcome {
     padding-bottom: 20px;
+    & .welcome-content {
+      & p {
+        padding-bottom: 10px;
+      }
+    }
   }
   .about-welcome2 {
     padding-top: 0px;
 
     & .welcome-content {
       order: 2;
+      & p {
+        padding: 10px 20px;
+      }
     }
     & .welcome-img {
       & img {
@@ -215,11 +223,11 @@
         }
       }
     }
-    & .thrive-feature{
-        padding: 20px;
-        & p{
-            padding: 0px 0px 20px 0px;
-        }
+    & .thrive-feature {
+      padding: 20px;
+      & p {
+        padding: 0px 0px 20px 0px;
+      }
     }
   }
 }

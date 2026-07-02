@@ -1,6 +1,6 @@
 header {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   margin: 0 auto;
   padding: 20px;
   justify-content: space-between;
@@ -36,9 +36,10 @@ header {
   }
 }
 
-@media (max-width: 1040px){
+@media (max-width: 1180px){
   header{
-    justify-content: center;
+    justify-content: space-between;
+    padding: 20px 40px;
     & img{
       width: 80%;
     }
